@@ -42,9 +42,13 @@ def encrypt_key():
 def encrypt(data, key):
     from cryptography.fernet import Fernet
     fernet = Fernet(key)
-    enc_data = fernet.encrypt(data.encode())
+    enc_data = fernet.encrypt(data.encode('utf-8'))
     return enc_data
 
+def decrypt(key,data):
+    fernet = Fernet(key)
+    dec_user=fernet.decrypt(data).decode('utf-8')
+    return dec_user
 
 def createqr(data, file_name):
     import pyqrcode
@@ -86,3 +90,5 @@ def is_correct_input(que, data):
             return False
     else:
         pass
+def error():
+    print("Error! Your input must be as instructed.\nABORTED")
