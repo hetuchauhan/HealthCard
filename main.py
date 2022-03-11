@@ -1,18 +1,21 @@
-from Lib.modules import createuser as cu, hereismodules as mod,viewencdata as ved
+from Lib.modules import createuser as cu, hereismodules as mod,viewencdata as ved, searchuser as su,deleteid as di
 
 mod.imports()
+
 while True:
-    choice=int(input(
-        "You are-----\n1.Administrator\n2.End User(You can only view based on your string or QR.)\n3.Exit\n-->"))
+    choice=int(input("You are-----\n1.Administrator\n2.End User(You can only view based on your string or QR.)\n3.Exit\n-->"))
     try:
         if choice==1:
 
             while True:
                 ch = int(input(
-                    "Enter your choice-----\n1.Create new identity\n2.Search identity\n3.Modify identity\n4.Delete identity\n5.Exit\n-->"))
+                    "Enter your choice-----\n1.Create new identity\n2.Search identity\n3.Delete identity\n5.Exit\n-->"))
                 if ch == 1:
                     cu.create_identity()
-
+                elif ch == 2:
+                    su.searchuser()
+                elif ch==3:
+                    di.deleteid()
                 elif ch == 5:
                     break
                 else:
