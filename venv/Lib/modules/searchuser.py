@@ -1,57 +1,32 @@
-def searchuser():
-    from Lib.modules import hereismodules as him
-
+def searchuser(pref,data):
     import mysql.connector
-
-    pref=int(input("How would you like to search the record\n1. By Aadhaar No.\n2. By Mobile\n3. By Name\n4. Exit\n--->"))
-
     mydb = mysql.connector.connect(host="localhost", user="root", password="hetu123456", database="patients")
     mycursor = mydb.cursor()
 
+    if pref == 1:
 
-    if pref==1:
+        statement = """select * from reg where aadhaar= %s"""
+        mycursor.execute(statement, (data,))
+        records = mycursor.fetchall()
+        print("Total no of rows in table: ", mycursor.rowcount)
+        return records, mycursor.rowcount
 
-        aadhaar=input("Enter Aadhaar No.: ")
-        a=him.is_correct_input("aadhaar",aadhaar)
-        if a==True:
-            pass
-        else:
-            him.error()
-        statement="""select * from reg where aadhaar= %s"""
-        mycursor.execute(statement,(aadhaar,))
-        records=mycursor.fetchall()
+    elif pref == 2:
+
+        statement = """select * from reg where mobile= %s"""
+        mycursor.execute(statement, (data,))
+        records = mycursor.fetchall()
         print("Total number of rows in table: ", mycursor.rowcount)
-        for i in records:
-            print(i)
+        return records, mycursor.rowcount
 
-    elif pref==2:
+    elif pref == 3:
 
-        mob=input("Enter Mobile No.: ")
-        a=him.is_correct_input("mob",mob)
-        if a==True:
-            pass
-        else:
-            him.error()
-        statement="""select * from reg where mobile= %s"""
-        mycursor.execute(statement,(mob,))
-        records=mycursor.fetchall()
+        statement = """select * from reg where name= %s"""
+        mycursor.execute(statement, (data,))
+        records = mycursor.fetchall()
         print("Total number of rows in table: ", mycursor.rowcount)
-        for i in records:
-            print(i)
+        return records, mycursor.rowcount
 
-    elif pref==3:
-
-        name1=input("Enter Name: ")
-        statement="""select * from reg where name= %s"""
-        mycursor.execute(statement,(name1,))
-        records=mycursor.fetchall()
-        print("Total number of rows in table: ", mycursor.rowcount)
-        for i in records:
-            print(i)
-
-    elif pref==4:
-        quit()
-
-    else:
-        print("Wrong input!")
-        searchuser()
+    import mysql.connector
+    mydb = mysql.connector.connect(host="localhost", user="root", password="hetu123456", database="patients")
+    mycursor = mydb.cursor()
