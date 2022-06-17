@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="05f728ed-7b38-4f0a-adf4-39f4a7d3de08" name="Changes" comment="">
+    <list default="true" id="05f728ed-7b38-4f0a-adf4-39f4a7d3de08" name="Changes" comment="initial commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/modules/createuser.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/modules/createuser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/modules/deleteid.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/modules/deleteid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/modules/gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/modules/gui.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/Lib/modules/searchuser.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/modules/searchuser.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,6 +28,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/venv/Lib/modules/viewencdata.py" root0="FORCE_HIGHLIGHTING" />
@@ -69,7 +71,7 @@
       <recent name="C:\Users\hetuc\PycharmProjects\health card\venv\Lib" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.gui">
+  <component name="RunManager" selected="Python.test">
     <configuration name="createuser" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="health card" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -250,7 +252,21 @@
       <option name="project" value="LOCAL" />
       <updated>1647009307620</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="initial commit">
+      <created>1655187092318</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1655187092318</updated>
+    </task>
+    <task id="LOCAL-00007" summary="initial commit">
+      <created>1655187180181</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1655187180181</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -258,7 +274,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>

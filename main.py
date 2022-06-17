@@ -17,6 +17,7 @@ while True:
                         aadhaar = input("Enter Aadhaar No.: ")
                         a = mod.is_correct_input("aadhaar", aadhaar)
                         if a == True:
+                            print("oktest")
                             pass
                         else:
                             mod.error()
@@ -51,7 +52,47 @@ while True:
 
 
                 elif ch==3:
-                    di.deleteid()
+                    pref = int(input(
+                        "How would you like to delete the record\n1. By Aadhaar No.\n2. By Mobile\n3. By Name\n4. Exit\n--->"))
+                    if pref == 1:
+
+                        aadhaar = input("Enter Aadhaar No.: ")
+                        a = mod.is_correct_input("aadhaar", aadhaar)
+                        if a == True:
+                            pass
+                        else:
+                            mod.error()
+                        records = di.deleteid(1, aadhaar)
+                        for i in records:
+                            print(i)
+                        break
+
+                    elif pref == 2:
+
+                        mob = input("Enter Mobile No.: ")
+                        a = mod.is_correct_input("mob", mob)
+                        if a == True:
+                            pass
+                        else:
+                            mod.error()
+                        records = di.deleteid(2, mob)
+                        for i in records:
+                            print(i)
+                        break
+
+                    elif pref == 3:
+
+                        name1 = input("Enter Name: ")
+                        records = di.deleteid(3, name1)
+                        for i in records:
+                            print(i)
+                        break
+
+                    elif pref == 4:
+                        quit()
+
+                    else:
+                        print("Wrong input!")
                 elif ch == 5:
                     break
                 else:

@@ -27,6 +27,4 @@ def searchuser(pref,data):
         print("Total number of rows in table: ", mycursor.rowcount)
         return records, mycursor.rowcount
 
-    import mysql.connector
-    mydb = mysql.connector.connect(host="localhost", user="root", password="hetu123456", database="patients")
-    mycursor = mydb.cursor()
+
