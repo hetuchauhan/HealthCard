@@ -1,3 +1,4 @@
+import os
 def hereismodules():
     # importing the sys module
     import sys
@@ -55,7 +56,10 @@ def createqr(data, file_name):
     import png
     from pyqrcode import QRCode
     qr = pyqrcode.create(data)
-    qr.png(format(file_name) + ".png", scale=100)
+    os.chdir("C:\\Users\\hetuc\\PycharmProjects\\health card\\userQRcodes")
+    print(os.getcwd())
+    with open("C:\\Users\\hetuc\\PycharmProjects\\health card\\userQRcodes\\{}.png".format(file_name),'wb') as file:
+        qr.png(file, scale=100)
 
 
 def createqrkey(data, file_name):
@@ -63,7 +67,10 @@ def createqrkey(data, file_name):
     import png
     from pyqrcode import QRCode
     qr = pyqrcode.create(data)
-    qr.png(format(file_name) + " key.png", scale=100)
+    os.chdir("C:\\Users\\hetuc\\PycharmProjects\\health card\\userQRkeys")
+    print(os.getcwd())
+    with open("C:\\Users\\hetuc\\PycharmProjects\\health card\\userQRkeys\\{} key.png".format(file_name), 'wb') as file2:
+        qr.png(file2, scale=100)
 
 
 def is_correct_input(que, data):

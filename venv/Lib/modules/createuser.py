@@ -1,5 +1,5 @@
 from datetime import datetime
-from Lib.modules import hereismodules as him
+from Lib.modules import hereismodules as him, logdata as ld
 import mysql.connector
 
 mydb = mysql.connector.connect(host="localhost", user="root", password="hetu123456", database="patients")
@@ -15,7 +15,7 @@ def add_user_in_db(name, age, gender, aadhaar, mobile, pin,dep,sr_no=0, date=dat
     date = datetime.now()
     print(name, 'here')
     print(age, 'here')
-    mycursor.execute("create table if not exists reg (sr_no integer,\
+    mycursor.execute("create table if not exists reg (sr_no integer auto_increment,\
                                                         name varchar(50) not null,\
                                                         age integer(3),\
                                                         gender varchar(1),\
@@ -23,7 +23,8 @@ def add_user_in_db(name, age, gender, aadhaar, mobile, pin,dep,sr_no=0, date=dat
                                                         mobile varchar(10) not null,\
                                                         pin integer(6),\
                                                         date datetime,\
-                                                        department varchar(50) not null)")
+                                                        department varchar(50) not null,\
+                                                        INDEX(`sr_no`))")
 
     mycursor.execute("insert into reg(name,age,gender,aadhaar,mobile,pin,date,department)\
                     values('" + str(name) + "','" + str(age) + "','" + str(gender) + "','" + str(aadhaar) + "','" + str(
@@ -81,3 +82,5 @@ def create_identity(typ,name1="abc",age="0",gender="0",aadhaar=0,mobile=0,pin=0,
         # creating a qrcode and stroring data in it
     him.createqr(enc_user, aadhaar)
     him.createqrkey(key1, aadhaar)
+    log=name1 + " " + str(key)
+    ld.logdata(name1,"usercreate")

@@ -1,6 +1,5 @@
 def deleteid(typ,data):
-    from Lib.modules import hereismodules as him
-
+    from Lib.modules import hereismodules as him, logdata as ld
     import mysql.connector
     mydb = mysql.connector.connect(host="localhost", user="root", password="hetu123456", database="patients")
     mycursor = mydb.cursor()
@@ -16,6 +15,7 @@ def deleteid(typ,data):
         mycursor.execute(statement2,(data,))
         print("rec deleted!")
         returncode=200
+        ld.logdata(str(records[0][1]), 'userdelete')
         mydb.commit()
         return records, returncode
 
@@ -31,6 +31,7 @@ def deleteid(typ,data):
         mycursor.execute(statement2, (data,))
         print("rec deleted!")
         returncode = 200
+        ld.logdata(str(records[0][1]), 'userdelete')
         mydb.commit()
         return records, returncode
     elif typ == 3:
@@ -46,11 +47,13 @@ def deleteid(typ,data):
         mycursor.execute(statement2, (data,))
         print("rec deleted!")
         returncode = 200
+        ld.logdata(str(records[0][1]), 'userdelete')
         mydb.commit()
         return records, returncode
     elif typ==4:
         quit()
     else:
         print("invalid input!")
+
     mydb.commit()
 

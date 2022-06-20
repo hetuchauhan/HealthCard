@@ -1,11 +1,11 @@
 import tkinter as tk
 from tkinter import *
 from tkinter.ttk import *
-from tkinter import ttk
 import sv_ttk
 from tkinter import messagebox
 from Lib.modules import createuser as cu, hereismodules as him, searchuser as su, deleteid as di
 import os
+
 
 def error(a):
     if a == 1:
@@ -30,25 +30,25 @@ def createuserwindow():
 
         Age = str(Ageentry.get())
         Gender = str(Genderentry.get())
-        if him.is_correct_input("gender", Gender) == True:
+        if him.is_correct_input("gender", Gender) is True:
             pass
         else:
             Genderentry.delete(0, 'end')
             error(1)
         Mobile = str(Mobileentry.get())
-        if him.is_correct_input("mob", Mobile) == True:
+        if him.is_correct_input("mob", Mobile) is True:
             pass
         else:
             Mobileentry.delete(0, 'end')
             error(1)
         Aadhaar = str(Aadhaarentry.get())
-        if him.is_correct_input("aadhaar", Aadhaar) == True:
+        if him.is_correct_input("aadhaar", Aadhaar) is True:
             pass
         else:
             Aadhaarentry.delete(0, 'end')
             error(1)
         Pin = str(Pinentry.get())
-        if him.is_correct_input("zip", Pin) == True:
+        if him.is_correct_input("zip", Pin) is True:
             pass
         else:
             Pinentry.delete(0, 'end')
@@ -92,6 +92,7 @@ def createuserwindow():
     button.grid(column=1, row=16, pady=10)
     button.focus_set()
 
+
 def searchuserwindow():
 
     def submitdata():
@@ -104,23 +105,23 @@ def searchuserwindow():
         print(data)
         print("working3")
 
-        if typ==1:
-            if him.is_correct_input("aadhaar", data) == True:
+        if typ == 1:
+            if him.is_correct_input("aadhaar", data) is True:
                 pass
             else:
                 entry.delete(0, 'end')
                 error(2)
             result = su.searchuser(1, data)
             display_result(result)
-        elif typ==2:
-            if him.is_correct_input("mob", data) == True:
+        elif typ == 2:
+            if him.is_correct_input("mob", data) is True:
                 pass
             else:
                 entry.delete(0, 'end')
                 error(2)
             result = su.searchuser(2, data)
             display_result(result)
-        elif typ==3:
+        elif typ == 3:
             result = su.searchuser(3, data)
             display_result(result)
 
@@ -133,24 +134,25 @@ def searchuserwindow():
     def deletedata():
         typ = selected.get()
         data = entry.get()
-        if typ==1:
-            returnedcode=di.deleteid(1,data)
-            if returnedcode[1]==200:
+        if typ == 1:
+            returnedcode = di.deleteid(1, data)
+            if returnedcode[1] == 200:
                 clearprev()
                 searchuser_result.grid(column=1, row=10, pady=10)
-                Resultlabel = Label(searchuser_result, text="Record deleted!!!" + str(returncode[0]))
+                Resultlabel = Label(searchuser_result, text="Record deleted!!!" + str(returnedcode[0]))
                 Resultlabel.grid(column=1, row=1, pady=10)
-        elif typ==2:
-            returnedcode=di.deleteid(2,data)
-        elif typ==3:
-            returnedcode=di.deleteid(3,data)
+        elif typ == 2:
+            returnedcode = di.deleteid(2, data)
+        elif typ == 3:
+            returnedcode = di.deleteid(3, data)
+
     def display_result(result):
 
         searchuser_result.grid(column=1, row=10, pady=10)
 
         Resultlabel = Label(searchuser_result, text="Row count: " + str(result[1]))
         Resultlabel.grid(column=1, row=1, pady=10)
-        if result[1]!=0:
+        if result[1] != 0:
             Resultlabel3 = Label(searchuser_result, text="Name: "+str(result[0][0][1]))
             Resultlabel3.grid(column=1, row=3, pady=10)
             Resultlabel4 = Label(searchuser_result, text="Age: "+str(result[0][0][2]))
@@ -169,7 +171,7 @@ def searchuserwindow():
             Resultlabel10.grid(column=1, row=17, pady=10)
             delete_button = Button(searchuser_result, text="Delete Record", command=deletedata)
             delete_button.grid(column=1, row=19, pady=10)
-        elif result[1]==0:
+        elif result[1] == 0:
 
             Resultlabel2 = Label(searchuser_result, text="No record found!!!")
             Resultlabel2.grid(column=1, row=5, pady=10)
@@ -178,23 +180,22 @@ def searchuserwindow():
     # Main Window min width
     searchuserwindow.geometry("500x700")
     searchuserwindow.title("Search User Window")
-    Grid.rowconfigure(searchuserwindow, 0, weight=1)
-    Grid.columnconfigure(searchuserwindow, 0, weight=1)
+
     searchuserframe = Frame(searchuserwindow, height=100)
-    searchuserframe.grid(column=0, row=0, pady=10,sticky= "ns")
+    searchuserframe.grid(column=0, row=0, pady=10, sticky="ns")
     sv_ttk.set_theme("light")
 
-    #radiobuttons
+    # radiobuttons
     selected = tk.IntVar(searchuserframe)
     r1 = Radiobutton(searchuserframe, text='Aadhaar', variable=selected, value=1, command=clearprev)
-    r2 = Radiobutton(searchuserframe, text='Mobile',variable=selected, value=2, command=clearprev)
+    r2 = Radiobutton(searchuserframe, text='Mobile', variable=selected, value=2, command=clearprev)
     r3 = Radiobutton(searchuserframe, text='Name', variable=selected, value=3, command=clearprev)
 
-    r1.grid(column=1,row=1, padx=5, pady=5)
-    r2.grid(column=1,row=2, padx=5, pady=5)
-    r3.grid(column=1,row=3, padx=5, pady=5)
-    radiolist=[r1,r2,r3]
-    #inputbox
+    r1.grid(column=1, row=1, padx=5, pady=5)
+    r2.grid(column=1, row=2, padx=5, pady=5)
+    r3.grid(column=1, row=3, padx=5, pady=5)
+
+    # inputbox
     searchuser_inputframe = Frame(searchuserframe, height=100)
     searchuser_inputframe.grid(column=1, row=5, pady=10, sticky='ns')
 
@@ -207,14 +208,12 @@ def searchuserwindow():
 
     searchuserframe.wait_variable(selected)
 
-
     search_button = Button(searchuser_inputframe, text="Search", command=submitdata)
     search_button.grid(column=1, row=3, pady=10)
 
     searchuser_result = Frame(searchuserframe, height=100, width=100)
 
     searchuserwindow.mainloop()
-
 
 
 master = Tk()
